@@ -16,6 +16,11 @@ const operations = [
   [-1, 0]
 ];
 
+
+
+
+
+
 const generateEmptyGrid = () => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
@@ -32,9 +37,10 @@ const App= () => {
 
   const [running, setRunning] = useState(false);
   const runningRef = useRef(running);
+  const [i, setI] = useState(100);
   runningRef.current = running;
 
-  const runSimulation = useCallback(() => {
+  const runSimulation = useCallback((i) => {
     if (!runningRef.current) {
       return;
     }
@@ -62,7 +68,7 @@ const App= () => {
       });
     });
 
-    setTimeout(runSimulation);
+    setTimeout(()=>{runSimulation(i)},i);
   }, []);
 
   return (
@@ -70,7 +76,9 @@ const App= () => {
     <div >
     <h1>Conway's Game of Life</h1>
     </div>
-    
+    <div>
+
+    </div>
     <div className = 'grid'
         style={{
           display: "grid",
@@ -98,13 +106,20 @@ const App= () => {
           ))
         )}
       </div>
+<h2>
+Rules of the game:
+</h2>
+<p>
+test
+</p>
+
 
       <button
         onClick={() => {
           setRunning(!running);
           if (!running) {
             runningRef.current = true;
-            runSimulation();
+            runSimulation(i);
           }
         }}
       >
@@ -131,7 +146,36 @@ const App= () => {
       >
         clear
       </button>
-      
+
+      <button
+        onClick={() => {
+          console.log(i)
+          setRunning(false);
+          clearTimeout(runSimulation)
+            //setI(1000);
+            console.log(i)
+            //runningRef.current = true;
+
+            //setRunning(true)
+            //runSimulation(i);
+            //setRunning(running);
+              runningRef.current = true;
+              runSimulation(i);
+        }}
+      >
+        step
+      </button>
+
+      <form>
+
+      </form>
+      <button
+        onClick={() => {
+          
+        }}
+      >
+        grid size
+      </button>
     </>
   );
 };
