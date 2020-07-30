@@ -5,6 +5,7 @@ import './index.css';
 const numRows = 20;
 const numCols = 20;
 
+
 const operations = [
   [0, 1],
   [0, -1],
@@ -106,10 +107,10 @@ Rules of the game<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#
 </h2>
 <h2>Directions</h2>
 <p>
-Start/Stop: Turns on/off the simulation || Random: Puts random cells on the grid || Clear: clears the grid || Step: Manually goes thought the game step by step with each click || Grid Size: You can change the size of the grid by entering in a number in the x and y text box (currently on 20x20) and clicking enter
+Start/Stop: Turns on/off the simulation || Random: Puts random cells on the grid || Clear: clears the grid || Step: Manually goes though the game step by step with each click || Speed up: Turns the simulation into a fast boi
 </p>
 
-
+<div className='button1'>
       <button
         onClick={() => {
           setRunning(!running);
@@ -145,24 +146,33 @@ Start/Stop: Turns on/off the simulation || Random: Puts random cells on the grid
 
       <button
         onClick={() => {
-          console.log(i)
           setRunning(false);
           clearTimeout(runSimulation)
-            //setI(1000);
-            console.log(i)
-            //runningRef.current = true;
-
-            //setRunning(true)
-            //runSimulation(i);
-            //setRunning(running);
-              runningRef.current = true;
-              runSimulation(i);
+          runningRef.current = true;
+          runSimulation(i);
         }}
       >
         step
       </button>
+      <button
+        onClick={() => {
+          console.log(i)
+          setRunning(false);
+          clearTimeout(runSimulation)
+            setI(5000);
+            console.log(i)
+            runningRef.current = true;
+            setRunning(true)
+            runSimulation(i);
+            setRunning(running);
+              runningRef.current = true;
+              runSimulation(i);
+        }}
+      >
+        speed up
+      </button>
 
-      <form class='form' id='form'>
+      {/* <form class='form' id='form'>
         <div class='theform'>
           <label>Grid Size: X</label>
           <input type='text' placeholder= '20' id='gridsize'></input>
@@ -171,9 +181,16 @@ Start/Stop: Turns on/off the simulation || Random: Puts random cells on the grid
           <label>Grid Size: Y</label>
           <input type='text' placeholder= '20' id='gridsize'></input>
         </div>
-        <button class='enter'>Enter</button>
-      </form>
-      
+        
+        <button
+        onClick={() => {
+          setGrid(generateEmptyGrid());
+        }}
+      >
+        Enter
+      </button>
+      </form>*/}
+      </div> 
     </>
   );
 };
