@@ -2,8 +2,8 @@ import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
 import './index.css';
 
-const numRows = 20;
-const numCols = 20;
+const numRows = 25;
+const numCols = 25;
 
 
 const operations = [
@@ -103,8 +103,12 @@ const App= () => {
         )}
       </div>
 <h2>
-Rules of the game<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules">Please click here</a>
+Rules of the game
 </h2>
+<p>
+Any live cell with fewer than two live neighbours dies, as if by underpopulation. || Any live cell with two or three live neighbours lives on to the next generation. || Any live cell with more than three live neighbours dies, as if by overpopulation. || Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction
+</p> 
+<p> Any live cell with two or three live neighbours survives.|| Any dead cell with three live neighbours becomes a live cell. || All other live cells die in the next generation. Similarly, all other dead cells stay dead.</p>
 <h2>Directions</h2>
 <p>
 Start/Stop: Turns on/off the simulation || Random: Puts random cells on the grid || Clear: clears the grid || Step: Manually goes though the game step by step with each click || Speed up: Turns the simulation into a fast boi
